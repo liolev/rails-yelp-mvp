@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs_12 col-sm-6 col-sm-offset-3">
+      <%= simple_form_for(@restaurant) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :description %>
+      <%= f.input :stars %>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
