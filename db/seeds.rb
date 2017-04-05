@@ -20,3 +20,11 @@ restaurants_attributes = [
   }
 ]
 restaurants_attributes.each { |params| Restaurant.create!(params) }
+
+good = Review.new(content: "Not pricey and super good", rating: 4)
+
+epicure = Restaurant.first
+
+good.restaurant = epicure
+
+good.save

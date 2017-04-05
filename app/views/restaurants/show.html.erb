@@ -1,24 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="text-center">
+  <h2><%= @restaurant.name %></h2>
+  <p><%= @restaurant.address %></p>
+  <p>
+    <%= @restaurant.stars.times do %>
+      <i class="fa fa-star"></i>
+    <% end %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+  <ul class="list-unstyled">
+    <% @restaurant.reviews.each do |review| %>
+      <li>`
+        <%= review.content %>
+        (<%= review.rating.times do %>
+          <i class="fa fa-star"></i>
+        <% end %>)
+      </li>
+    <% end %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
+  </ul>
+  <div class="container">
+    <div class="col">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <%= simple_form_for [@restaurant, @review] do |f| %>
+          <%= f.input :content, placeholder: "Did you like it?" %>
+          <%= f.input :rating, collection: [1, 2, 3, 4, 5], prompt: "How many stars ?" %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @restaurant.description %>
-</p>
 
-<p>
-  <strong>Stars:</strong>
-  <%= @restaurant.stars %>
-</p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
